@@ -10,6 +10,8 @@ const NewProducts = () => {
     setProductDetail,
   } = useData();
 
+  console.log({ newInventoryData });
+
   const navigate = useNavigate();
   const handleAddNewProduct = () => {
     setNewInventoryData([...newInventoryData, productDetail]);

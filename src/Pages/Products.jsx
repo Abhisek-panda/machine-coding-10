@@ -1,9 +1,15 @@
+import { useNavigate } from "react-router-dom";
 import Navbar from "../Components/Navbar";
 import Sidebar from "../Components/Sidebar";
 import { useData } from "../main";
 
 const Products = () => {
-  const { newInventoryData } = useData();
+  const { filteredProduct } = useData();
+  const newD = filteredProduct();
+  const navigate = useNavigate();
+  const handleSingleProduct = (id) => {
+    navigate(`{/products/${id}}`);
+  };
   return (
     <div className="flex gap-5">
       <div>
@@ -26,7 +32,7 @@ const Products = () => {
               </tr>
             </thead>
             <tbody>
-              {newInventoryData.map((product) => {
+              {newD?.map((product) => {
                 return (
                   <tr key={product?.id}>
                     <td>
@@ -36,7 +42,12 @@ const Products = () => {
                         className="h-12 w-12 object-fill"
                       />
                     </td>
-                    <td>{product?.name}</td>
+                    <td
+                      className="underline text-blue-600 hover:cursor-pointer"
+                      onClick={() => handleSingleProduct(product?.id)}
+                    >
+                      {product?.name}
+                    </td>
                     <td>{product?.description}</td>
                     <td>${product?.price}</td>
                     <td>{product?.stock}</td>

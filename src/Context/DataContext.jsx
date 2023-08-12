@@ -28,8 +28,29 @@ export const DataProvider = ({ children }) => {
   });
 
   const filteredProduct = () => {
-    const newData = [...newInventoryData];
-    // const filteredDepartment = filters?.department ?
+    const newData = [...data];
+
+    const filteredDepartment =
+      filters?.department === "Kitchen"
+        ? newData?.filter((product) => product?.department === "Kitchen")
+        : filters?.department === "Clothing"
+        ? newData?.filter((product) => product?.department === "Clothing")
+        : filters?.department === "Toys"
+        ? newData?.filter((product) => product?.department === "Toys")
+        : newData;
+
+    const filteredLowStock = filters?.lowStock
+      ? filteredDepartment?.filter((product) => product?.stock <= 10)
+      : filteredDepartment;
+
+    const sortedData = filters?.sorting
+      ? filters?.sorting === "name"
+        ? [...filteredLowStock].sort((a, b) => a?.name.localeCompare(b?.name))
+        : filters?.sorting === "price"
+        ? [...filteredLowStock].sort((a, b) => a?.price - b?.price)
+        : [...filteredLowStock].sort((a, b) => a?.stock - b?.stock)
+      : filteredLowStock;
+    return sortedData;
   };
 
   const totalInventoryProduct = newInventoryData.reduce(
@@ -60,6 +81,7 @@ export const DataProvider = ({ children }) => {
         setFilters,
         productDetail,
         setProductDetail,
+        filteredProduct,
       }}
     >
       {children}

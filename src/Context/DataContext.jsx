@@ -29,7 +29,7 @@ export const DataProvider = ({ children }) => {
 
   const filteredProduct = () => {
     const newData = [...newInventoryData];
-    const filteredDepartment = filters?.department ? 
+    // const filteredDepartment = filters?.department ?
   };
 
   const totalInventoryProduct = newInventoryData.reduce(

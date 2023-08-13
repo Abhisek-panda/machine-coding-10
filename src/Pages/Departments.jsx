@@ -30,12 +30,12 @@ const Departments = () => {
             Kitchen
           </h2>
         </div>
-        <div className="w-48 bg-neutral-200 h-24 flex flex-col items-center rounded-md hover:bg-slate-600 justify-center hover:cursor-pointer hover:text-white justify-center">
+        <div className="w-48 bg-neutral-200 h-24 flex flex-col items-center rounded-md hover:bg-slate-600  hover:cursor-pointer hover:text-white justify-center">
           <h2 onClick={handleClothing} className="font-bold text-2xl">
             Clothing
           </h2>
         </div>
-        <div className="w-48 bg-neutral-200 h-24 flex flex-col items-center rounded-md hover:bg-slate-600 justify-center hover:cursor-pointer hover:text-white justify-center">
+        <div className="w-48 bg-neutral-200 h-24 flex flex-col items-center rounded-md hover:bg-slate-600  hover:cursor-pointer hover:text-white justify-center">
           <h2 onClick={handleToys} className="font-bold text-2xl">
             Toys
           </h2>

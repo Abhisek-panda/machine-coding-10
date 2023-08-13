@@ -8,7 +8,8 @@ const Products = () => {
   const newD = filteredProduct();
   const navigate = useNavigate();
   const handleSingleProduct = (id) => {
-    navigate(`{/products/${id}}`);
+    navigate(`/products/${id}`);
+    console.log({ id });
   };
   return (
     <div className="flex gap-5">
@@ -44,7 +45,7 @@ const Products = () => {
                     </td>
                     <td
                       className="underline text-blue-600 hover:cursor-pointer"
-                      onClick={() => handleSingleProduct(product?.id)}
+                      onClick={() => handleSingleProduct(product.id)}
                     >
                       {product?.name}
                     </td>
